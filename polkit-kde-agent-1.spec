@@ -1,33 +1,37 @@
-%define         svn  1056463
+%define         git  99d1369a
 
-Name:           polkit-kde-1
-Version:        0.95.1
-Summary:        Library that allows developer to access PolicyKit-1 API
-Release:        %mkrel 3
+Name:           polkit-kde-agent-1
+Version:        0.97.1
+Summary:        PolicyKit authentication agent for KDE
+Release:        %mkrel %{?git:0.g%{git}}.1
 License:        GPL
 Group:          Graphical desktop/KDE
-URL:            http://www.kde.org/
-Source0:        %{name}-%{version}.tar.bz2
+URL:            https://projects.kde.org/projects/extragear/base/%{name}
+# For now: git archive --prefix polkit-kde-agent-1/ %{git}
+Source0:        %{name}-%{version}%{?git:-g%{git}}.tar.bz2
 Patch0:         polkit-kde-1-0.95.1-add-fr-translations.patch
 BuildRoot:      %_tmppath/%name-%version-%release-buildroot
-BuildRequires:  polkit-qt-1-devel >= 0.95.1
+BuildRequires:  polkit-qt-1-devel >= 0.98.1
 BUildRequires:  kdelibs4-devel
 Provides:       polkit-agent
+Provides:	polkit-kde-1
+Obsoletes:	polkit-kde-1
 
 %description
-Polkit-kde-1 is a library that allows developer to access PolicyKit-1
-API with a nice Qt-style API
+PolicyKit authentication agent for KDE
 
 %files -f polkit-kde-authentication-agent-1.lang
 %defattr(-,root,root)
-%{_kde_sysconfdir}/xdg/autostart/polkit-kde-authentication-agent-1.desktop
+%dir %{_kde_appsdir}/policykit1-kde
+%{_kde_appsdir}/policykit1-kde/policykit1-kde.notifyrc
+%{_kde_autostart}/polkit-kde-authentication-agent-1.desktop
 %{_kde_libdir}/kde4/libexec/polkit-kde-authentication-agent-1
 
 #-----------------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
-%patch0 -p0
+%setup -q -n %name
+#%patch0 -p0
 
 %build
 
