@@ -8,7 +8,7 @@ URL:            https://projects.kde.org/projects/extragear/base/%{name}
 Source0:        http://fr2.rpmfind.net/linux/KDE/stable/apps/KDE4.x/admin/%{name}-%{version}.tar.bz2
 BuildRoot:      %_tmppath/%name-%version-%release-buildroot
 BuildRequires:  polkit-qt-1-devel >= 0.99.0
-BUildRequires:  kdelibs4-devel
+BuildRequires:  kdelibs4-devel
 Provides:       polkit-agent
 Provides:	polkit-kde-1
 Obsoletes:	polkit-kde-1
@@ -29,7 +29,7 @@ PolicyKit authentication agent for KDE
 %setup -q -n %name-%version
 
 %build
-%cmake_qt4
+%cmake_kde4
 %make
 
 %install
