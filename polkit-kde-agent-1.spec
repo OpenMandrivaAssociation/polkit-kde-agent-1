@@ -1,17 +1,13 @@
-%define         git  99d1369a
-
 Name:           polkit-kde-agent-1
-Version:        0.97.1
+Version:        0.99.0
 Summary:        PolicyKit authentication agent for KDE
-Release:        %mkrel %{?git:0.}2
+Release:        %mkrel 1
 License:        GPL
 Group:          Graphical desktop/KDE
 URL:            https://projects.kde.org/projects/extragear/base/%{name}
-# For now: git archive --prefix polkit-kde-agent-1/ %{git}
-Source0:        %{name}-%{version}%{?git:-g%{git}}.tar.bz2
-Patch0:         polkit-kde-1-0.95.1-add-fr-translations.patch
+Source0:        http://fr2.rpmfind.net/linux/KDE/stable/apps/KDE4.x/admin/%{name}-%{version}.tar.bz2
 BuildRoot:      %_tmppath/%name-%version-%release-buildroot
-BuildRequires:  polkit-qt-1-devel >= 0.98.1
+BuildRequires:  polkit-qt-1-devel >= 0.99.0
 BUildRequires:  kdelibs4-devel
 Provides:       polkit-agent
 Provides:	polkit-kde-1
@@ -30,14 +26,11 @@ PolicyKit authentication agent for KDE
 #-----------------------------------------------------------------------------
 
 %prep
-%setup -q -n %name
-#%patch0 -p0
+%setup -q -n %name-%version
 
 %build
-
 %cmake_qt4
 %make
-
 
 %install
 rm -rf %buildroot
