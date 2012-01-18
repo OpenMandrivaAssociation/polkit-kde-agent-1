@@ -1,13 +1,14 @@
 Name:           polkit-kde-agent-1
 Version:        0.99.0
 Summary:        PolicyKit authentication agent for KDE
-Release:        %mkrel 3
+Release:        %mkrel 4
 License:        GPL
 Group:          Graphical desktop/KDE
 URL:            https://projects.kde.org/projects/extragear/base/%{name}
 Source0:        http://fr2.rpmfind.net/linux/KDE/stable/apps/KDE4.x/admin/%{name}-%{version}.tar.bz2
 # upstream patches
 # (bor) make sure dialogue is not hidden (GIT)
+Patch0:		polkit-kde-agent-1-0.99.0-l10n-ru.patch
 Patch100:	0001-Bring-the-auth-dialog-to-the-front-when-it-is-shown..patch
 BuildRoot:      %_tmppath/%name-%version-%release-buildroot
 BuildRequires:  polkit-qt-1-devel >= 0.99.0
