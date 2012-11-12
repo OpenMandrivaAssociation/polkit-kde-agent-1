@@ -1,0 +1,49 @@
+diff -urN polkit-kde-agent-1-0.99.0.orig/attachment.cgi?id=18809 polkit-kde-agent-1-0.99.0/attachment.cgi?id=18809
+--- polkit-kde-agent-1-0.99.0.orig/attachment.cgi?id=18809	1969-12-31 19:00:00.000000000 -0500
++++ polkit-kde-agent-1-0.99.0/attachment.cgi?id=18809	2012-01-17 19:57:59.000000000 -0500
+@@ -0,0 +1,26 @@
++
++[Desktop Entry]
++Name=PolicyKit Authentication Agent
++Name[da]=PolicyKit autentificeringsagent
++Name[en_GB]=PolicyKit Authentication Agent
++Name[et]=PolicyKiti autentimisagent
++Name[pt]=Agente de Autenticação do PolicyKit
++Name[ru]=Агент аутентификации PolicyKit
++Name[sv]=Policykit behörighetskontrollverktyg
++Name[uk]=Агент розпізнавання PolicyKit
++Name[x-test]=xxPolicyKit Authentication Agentxx
++Comment=PolicyKit Authentication Agent
++Comment[da]=PolicyKit autentificeringsagent
++Comment[en_GB]=PolicyKit Authentication Agent
++Comment[et]=PolicyKiti autentimisagent
++Comment[pt]=Agente de Autenticação do PolicyKit
++Comment[ru]=Агент аутентификации PolicyKit
++Comment[sv]=Policykit behörighetskontrollverktyg
++Comment[uk]=Агент розпізнавання PolicyKit
++Comment[x-test]=xxPolicyKit Authentication Agentxx
++Exec=${LIBEXEC_INSTALL_DIR}/polkit-kde-authentication-agent-1
++Terminal=false
++Type=Application
++Categories=
++X-Desktop-File-Install-Version=0.15
++OnlyShowIn=KDE;
+diff -urN polkit-kde-agent-1-0.99.0.orig/polkit-kde-authentication-agent-1.desktop.in polkit-kde-agent-1-0.99.0/polkit-kde-authentication-agent-1.desktop.in
+--- polkit-kde-agent-1-0.99.0.orig/polkit-kde-authentication-agent-1.desktop.in	2010-12-08 18:40:22.000000000 -0500
++++ polkit-kde-agent-1-0.99.0/polkit-kde-authentication-agent-1.desktop.in	2012-01-17 19:58:41.000000000 -0500
+@@ -5,6 +5,7 @@
+ Name[en_GB]=PolicyKit Authentication Agent
+ Name[et]=PolicyKiti autentimisagent
+ Name[pt]=Agente de Autenticação do PolicyKit
++Name[ru]=Агент аутентификации PolicyKit
+ Name[sv]=Policykit behörighetskontrollverktyg
+ Name[uk]=Агент розпізнавання PolicyKit
+ Name[x-test]=xxPolicyKit Authentication Agentxx
+@@ -13,6 +14,7 @@
+ Comment[en_GB]=PolicyKit Authentication Agent
+ Comment[et]=PolicyKiti autentimisagent
+ Comment[pt]=Agente de Autenticação do PolicyKit
++Comment[ru]=Агент аутентификации PolicyKit
+ Comment[sv]=Policykit behörighetskontrollverktyg
+ Comment[uk]=Агент розпізнавання PolicyKit
+ Comment[x-test]=xxPolicyKit Authentication Agentxx
