@@ -1,7 +1,7 @@
 Name:           polkit-kde-agent-1
 Version:        0.99.0
 Summary:        PolicyKit authentication agent for KDE
-Release:        6
+Release:        7
 License:        GPL
 Group:          Graphical desktop/KDE
 URL:            https://projects.kde.org/projects/extragear/base/%{name}
