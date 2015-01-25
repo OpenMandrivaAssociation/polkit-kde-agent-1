@@ -1,41 +1,52 @@
-Summary:	PolicyKit authentication agent for KDE
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+
+Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
-Version:	0.99.0
-Release:	13
-License:	GPLv2
-Group:		Graphical desktop/KDE
-Url:		https://projects.kde.org/projects/extragear/base/%{name}
-Source0:	http://fr2.rpmfind.net/linux/KDE/stable/apps/KDE4.x/admin/%{name}-%{version}.tar.bz2
-# upstream patches
-# (bor) make sure dialogue is not hidden (GIT)
-Patch100:	0001-Bring-the-auth-dialog-to-the-front-when-it-is-shown..patch
-Patch101:	polkit-kde-agent-1-0.99.0-l10n-ru.patch
-BuildRequires:	kdelibs4-devel
-BuildRequires:	pkgconfig(polkit-qt-1)
-Provides:	polkit-agent
-Provides:	polkit-kde-1
+Version:	5.1.95
+Release:	1
+License:	LGPL
+Group:		System/Libraries
+Url:		http://kde.org/
+Source0:	ftp://ftp.kde.org/pub/kde/%{stable}/plasma/%{version}/%{name}-%{version}.tar.xz
+
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(Qt5)
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5DBus)
+BuildRequires:	cmake(Qt5Gui)
+BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(KF5WindowSystem)
+BuildRequires:	cmake(KF5DBusAddons)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5Crash)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5IconThemes)
+BuildRequires:	cmake(KF5Notifications)
+BuildRequires:	cmake(PolkitQt5-1)
+BuildRequires:	qt5-devel
+BuildRequires:	cmake
+BuildRequires:	ninja
 
 %description
-PolicyKit authentication agent for KDE
+KDE Agent for PolicyKit
 
 %files -f polkit-kde-authentication-agent-1.lang
-%dir %{_kde_appsdir}/policykit1-kde
-%{_kde_appsdir}/policykit1-kde/policykit1-kde.notifyrc
-%{_kde_autostart}/polkit-kde-authentication-agent-1.desktop
-%{_kde_libdir}/kde4/libexec/polkit-kde-authentication-agent-1
+%{_sysconfdir}/xdg/autostart/polkit-kde-authentication-agent-1.desktop
+%{_libdir}/libexec/polkit-kde-authentication-agent-1
+%{_datadir}/knotifications5/policykit1-kde.notifyrc
 
-#-----------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
-%apply_patches
 
 %build
-%cmake_kde4
-%make
+%cmake -G Ninja \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+ninja
 
 %install
-%makeinstall_std -C build
-
+DESTDIR="%{buildroot}" ninja -C build install
 %find_lang polkit-kde-authentication-agent-1
-
