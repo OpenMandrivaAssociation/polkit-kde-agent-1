@@ -7,7 +7,7 @@ Release:	1
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
-Source0:	ftp://ftp.kde.org/pub/kde/%{stable}/plasma/%{version}/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/plasma/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5)
@@ -25,12 +25,9 @@ BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5IconThemes)
 BuildRequires:	cmake(KF5Notifications)
 BuildRequires:	cmake(PolkitQt5-1)
-BuildRequires:	qt5-devel
-BuildRequires:	cmake
-BuildRequires:	ninja
 
 %description
-KDE Agent for PolicyKit
+KDE Agent for PolicyKit.
 
 %files -f polkit-kde-authentication-agent-1.lang
 %{_sysconfdir}/xdg/autostart/polkit-kde-authentication-agent-1.desktop
@@ -41,12 +38,11 @@ KDE Agent for PolicyKit
 
 %prep
 %setup -q
+%cmake_kde5
 
 %build
-%cmake -G Ninja \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
-ninja
+%ninja -C build
 
 %install
-DESTDIR="%{buildroot}" ninja -C build install
+%ninja_install -C build
 %find_lang polkit-kde-authentication-agent-1
