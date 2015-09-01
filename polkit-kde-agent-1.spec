@@ -3,7 +3,7 @@
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
 Version:	5.4.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
@@ -25,6 +25,8 @@ BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5IconThemes)
 BuildRequires:	cmake(KF5Notifications)
 BuildRequires:	cmake(PolkitQt5-1)
+Provides:	polkit-agent
+Provides:	polkit-kde-1
 
 %description
 KDE Agent for PolicyKit.
