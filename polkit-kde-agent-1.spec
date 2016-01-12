@@ -3,7 +3,7 @@
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
 Version:	5.5.3
-Release:	1
+Release:	2
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
@@ -13,7 +13,7 @@ Source0:	http://download.kde.org/%{stable}/plasma/%{version}/%{name}-%{version}.
 # Without this patch, launch polkit-kde-authentication-agent-1 followed by
 # pkexec -u root bash -i
 # and the dialog won't close, complaining connections failed.
-Patch0:		polkit-kde-agent-1-5.4.1-connectsyntax.patch
+#Patch0:		polkit-kde-agent-1-5.4.1-connectsyntax.patch
 
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5)
