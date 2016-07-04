@@ -2,7 +2,7 @@
 
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
-Version:	5.6.5
+Version:	5.7.0
 Release:	1
 License:	LGPL
 Group:		System/Libraries
@@ -54,4 +54,4 @@ KDE Agent for PolicyKit.
 
 %install
 %ninja_install -C build
-%find_lang polkit-kde-authentication-agent-1
+%find_lang polkit-kde-authentication-agent-1 || touch polkit-kde-authentication-agent-1.lang
