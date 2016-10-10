@@ -2,7 +2,7 @@
 
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
-Version:	5.7.4
+Version:	5.8.0
 Release:	1
 License:	LGPL
 Group:		System/Libraries
