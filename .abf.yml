@@ -1,4 +1,5 @@
 removed_sources:
   polkit-kde-agent-1-5.12.3.tar.xz: 23aff1d7afc8482ee92afef895a13f2283e4b071
-sources:
   polkit-kde-agent-1-5.12.6.tar.xz: b6b2685789b112f936e7031c4b05376a20a7e71e
+sources:
+  polkit-kde-agent-1-5.12.7.tar.xz: f2bbb9e71814e8e16bdc5039eaa95071f4e2e481
