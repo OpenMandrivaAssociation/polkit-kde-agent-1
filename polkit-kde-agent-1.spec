@@ -2,7 +2,7 @@
 
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
-Version:	5.17.4
+Version:	5.17.5
 Release:	1
 License:	LGPL
 Group:		System/Libraries
@@ -46,8 +46,7 @@ KDE Agent for PolicyKit.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 %ifarch %{aarch64}
 # Workaround for signal/slot problem with clang 7.0.1 on aarch64
 # Without this, the password dialog can't be closed because the
