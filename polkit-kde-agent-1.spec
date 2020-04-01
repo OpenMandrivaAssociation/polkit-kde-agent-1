@@ -2,12 +2,12 @@
 
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
-Version:	5.18.3
-Release:	2
+Version:	5.18.4.1
+Release:	1
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
-Source0:	http://download.kde.org/%{stable}/plasma/%{version}/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/plasma/%(echo %{version} |cut -d. -f1-3)/%{name}-%{version}.tar.xz
 # Not sure WHY converting this to old style connect syntax helps...
 # But it does.
 # Without this patch, launch polkit-kde-authentication-agent-1 followed by
@@ -47,13 +47,6 @@ KDE Agent for PolicyKit.
 
 %prep
 %autosetup -p1
-%ifarch %{aarch64}
-# Workaround for signal/slot problem with clang 7.0.1 on aarch64
-# Without this, the password dialog can't be closed because the
-# connection fails
-export CC=gcc
-export CXX=g++
-%endif
 %cmake_kde5
 
 %build
