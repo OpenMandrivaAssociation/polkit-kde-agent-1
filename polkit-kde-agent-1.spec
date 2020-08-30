@@ -3,17 +3,11 @@
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
 Version:	5.19.4
-Release:	1
+Release:	2
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
 Source0:	http://download.kde.org/%{stable}/plasma/%(echo %{version} |cut -d. -f1-3)/%{name}-%{version}.tar.xz
-# Not sure WHY converting this to old style connect syntax helps...
-# But it does.
-# Without this patch, launch polkit-kde-authentication-agent-1 followed by
-# pkexec -u root bash -i
-# and the dialog won't close, complaining connections failed.
-#Patch0:		polkit-kde-agent-1-5.4.1-connectsyntax.patch
 
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5)
