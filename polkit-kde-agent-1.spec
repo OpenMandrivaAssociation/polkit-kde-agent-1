@@ -2,7 +2,7 @@
 
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
-Version:	5.20.5
+Version:	5.21.0
 Release:	1
 License:	LGPL
 Group:		System/Libraries
@@ -36,6 +36,7 @@ KDE Agent for PolicyKit.
 %{_libdir}/libexec/polkit-kde-authentication-agent-1
 %{_datadir}/knotifications5/policykit1-kde.notifyrc
 %{_datadir}/applications/org.kde.polkit-kde-authentication-agent-1.desktop
+%{_prefix}/lib/systemd/user/plasma-polkit-agent.service
 
 #----------------------------------------------------------------------------
 
