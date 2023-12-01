@@ -31,7 +31,6 @@ BuildRequires:	cmake(KF6Config)
 BuildRequires:	cmake(KF6IconThemes)
 BuildRequires:	cmake(KF6Notifications)
 BuildRequires:	cmake(PolkitQt6-1)
-BuildRequires:	plasma6-xdg-desktop-portal-kde
 Provides:	polkit-agent
 
 %description
