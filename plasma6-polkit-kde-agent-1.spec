@@ -3,7 +3,7 @@
 
 Summary:	KDE Agent for PolicyKit
 Name:		plasma6-polkit-kde-agent-1
-Version:	5.90.0
+Version:	5.91.0
 Release:	%{?git:0.%{git}.}1
 License:	LGPL
 Group:		System/Libraries
