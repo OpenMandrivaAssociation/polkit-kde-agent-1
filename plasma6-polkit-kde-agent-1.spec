@@ -1,15 +1,17 @@
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-#define git 20231104
+%define git 20240217
+%define gitbranch Plasma/6.0
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Summary:	KDE Agent for PolicyKit
 Name:		plasma6-polkit-kde-agent-1
-Version:	5.93.0
+Version:	5.94.0
 Release:	%{?git:0.%{git}.}1
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
 %if 0%{?git:1}
-Source0:	https://invent.kde.org/plasma/polkit-kde-agent-1/-/archive/master/polkit-kde-agent-1-master.tar.bz2#/polkit-kde-agent-1-%{git}.tar.bz2
+Source0:	https://invent.kde.org/plasma/polkit-kde-agent-1/-/archive/%{gitbranch}/polkit-kde-agent-1-%{gitbranchd}.tar.bz2#/polkit-kde-agent-1-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/plasma/%(echo %{version} |cut -d. -f1-3)/polkit-kde-agent-1-%{version}.tar.xz
 %endif
@@ -46,7 +48,7 @@ KDE Agent for PolicyKit.
 #----------------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n polkit-kde-agent-1-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n polkit-kde-agent-1-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DBUILD_QCH:BOOL=ON \
 	-DBUILD_WITH_QT6:BOOL=ON \
