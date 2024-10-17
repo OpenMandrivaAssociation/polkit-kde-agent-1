@@ -9,7 +9,7 @@ Version:	6.2.1
 Release:	%{?git:0.%{git}.}1
 License:	LGPL
 Group:		System/Libraries
-Url:		http://kde.org/
+Url:		https://kde.org/
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/plasma/polkit-kde-agent-1/-/archive/%{gitbranch}/polkit-kde-agent-1-%{gitbranchd}.tar.bz2#/polkit-kde-agent-1-%{git}.tar.bz2
 %else
