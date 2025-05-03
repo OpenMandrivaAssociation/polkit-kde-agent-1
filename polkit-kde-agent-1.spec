@@ -4,7 +4,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Summary:	KDE Agent for PolicyKit
-Name:		plasma6-polkit-kde-agent-1
+Name:		polkit-kde-agent-1
 Version:	6.3.4
 Release:	%{?git:0.%{git}.}1
 License:	LGPL
@@ -34,30 +34,19 @@ BuildRequires:	cmake(KF6IconThemes)
 BuildRequires:	cmake(KF6Notifications)
 BuildRequires:	cmake(PolkitQt6-1)
 Provides:	polkit-agent
+# Renamed after 6.0 2025-05-03
+%rename plasma6-polkit-kde-agent-1
+
+BuildSystem:	cmake
+BuildOption:	-DBUILD_QCH:BOOL=ON
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 KDE Agent for PolicyKit.
 
-%files -f polkit-kde-authentication-agent-1.lang
+%files -f %{name}.lang
 %{_sysconfdir}/xdg/autostart/polkit-kde-authentication-agent-1.desktop
 %{_libdir}/libexec/polkit-kde-authentication-agent-1
 %{_datadir}/knotifications6/policykit1-kde.notifyrc
 %{_datadir}/applications/org.kde.polkit-kde-authentication-agent-1.desktop
 %{_prefix}/lib/systemd/user/plasma-polkit-agent.service
-
-#----------------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n polkit-kde-agent-1-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DBUILD_QCH:BOOL=ON \
-	-DBUILD_WITH_QT6:BOOL=ON \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-%find_lang polkit-kde-authentication-agent-1 || touch polkit-kde-authentication-agent-1.lang
