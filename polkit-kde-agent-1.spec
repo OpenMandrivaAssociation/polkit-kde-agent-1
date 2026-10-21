@@ -6,7 +6,7 @@
 Summary:	KDE Agent for PolicyKit
 Name:		polkit-kde-agent-1
 Version:	6.8.1
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	LGPL
 Group:		System/Libraries
 Url:		https://kde.org/
@@ -15,6 +15,8 @@ Source0:	https://invent.kde.org/plasma/polkit-kde-agent-1/-/archive/%{gitbranch}
 %else
 Source0:	http://download.kde.org/%{stable}/plasma/%(echo %{version} |cut -d. -f1-3)/polkit-kde-agent-1-%{version}.tar.xz
 %endif
+# Raise the authentication dialog on X11. The Wayland activation token path is unchanged.
+Patch0:		polkit-kde-agent-1-6.8.1-x11-activate.patch
 
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt6)
